@@ -12,31 +12,6 @@ export default function Signup() {
   });
   const navigate=useNavigate();
 
-  const handleLocationClick = async (e) => {
-    e.preventDefault();
-
-    try {
-      const { coords } = await new Promise((resolve, reject) => {
-        navigator.geolocation.getCurrentPosition(resolve, reject);
-      });
-
-      const { latitude, longitude } = coords;
-      console.log(latitude, longitude);
-
-      const response = await post("/auth/getlocation", {
-        latlong: { latitude, longitude },
-      });
-
-      const { location } = await response.json();
-      console.log(location);
-      setcredentials({ ...credentials, geolocation: location });
-    } catch (error) {
-      console.error("Error fetching location:", error);
-      alert("An error occurred while fetching location. Please try again.");
-    }
-  };
-
-
   const handleSubmit=async(e)=>{
     e.preventDefault();
 const response =await post("/createuser", {

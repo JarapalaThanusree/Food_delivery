@@ -8,7 +8,7 @@ export default function Cart() {
   let data = useCart();
   let dispatch = useDispatchCart();
 
-  if (data.length == 0) {
+  if (data.length === 0) {
     return (
       <div className="container mt-3">
         <h3 className="text-center fs-3 fst-italic">Your Cart</h3>

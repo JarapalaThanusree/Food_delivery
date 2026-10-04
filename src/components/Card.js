@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useDispatchCart, useCart } from '../components/ContextReducer.js'
+import { useDispatchCart } from '../components/ContextReducer.js'
 
 export default function Card(props) {
   const dispatch = useDispatchCart();
-  const data = useCart();
   const priceRef = useRef();
   const options = props.options;
   const priceOptions = Object.keys(options);
@@ -24,8 +23,8 @@ export default function Card(props) {
     });
   }
   useEffect(() => {
-    setSize(priceOptions[0]);
-  }, []);
+    setSize(Object.keys(options)[0]);
+  }, [options]);
   return (
     <div>
       <div>
